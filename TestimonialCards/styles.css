@@ -1,0 +1,168 @@
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+
+    /* grid with explicit column widths + span variations */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    /* base card – same as original, but we keep it clean */
+    .card {
+      border: 1px solid #2d3a4f;
+      border-radius: 20px;
+      padding: 26px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 4px rgba(1, 1, 1, 1);
+    }
+
+    .card:hover {
+      border-color: #4b5e7a;
+      /* box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6); */
+    }
+
+    .stars {
+      color: #fbbf24;
+      margin-bottom: 14px;
+      letter-spacing: 3px;
+      font-size: 1.1rem;
+    }
+
+    .quote {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      font-weight: 350;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid #28344a;
+      padding-top: 18px;
+      margin-top: auto;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid #3d4e68;
+    }
+
+    .author-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .author-info p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    /* ----- SPAN VARIANTS (different widths) ----- */
+    /* we use grid-column to span extra columns */
+
+    .card-span-2 {
+      grid-column: span 2;
+    }
+
+    .card-span-3 {
+      grid-column: span 3;
+    }
+
+    .card-span-full {
+      grid-column: 1 / -1;
+    }
+
+    /* subtle extra spacing for spanned cards */
+    .card-span-2 .quote,
+    .card-span-3 .quote,
+    .card-span-full .quote {
+      font-size: 1rem;
+    }
+
+    /* responsive: tablet */
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      /* reset spans on tablet: make all cards 1 column (span 1) */
+      .card-span-2,
+      .card-span-3,
+      .card-span-full {
+        grid-column: span 1;
+      }
+
+      /* but we want some cards to still stand out? we keep them as is, but they become normal */
+      /* we also allow a "featured" card to span both columns on tablet */
+      .card-span-2 {
+        grid-column: span 2; /* keep span-2 on tablet as 2 cols */
+      }
+
+      /* for 3 and full we keep them as 1 col to avoid breaking */
+      .card-span-3 {
+        grid-column: span 1;
+      }
+      .card-span-full {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .card-span-2,
+      .card-span-3,
+      .card-span-full {
+        grid-column: span 1;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* small extra: different border glow for spanned cards (optional) */
+    .card-span-2 {
+      border-color: #3b5b7a;
+    }
+    .card-span-3 {
+      border-color: #4a6a8a;
+    }
+    .card-span-full {
+      border-color: #5f7f9f;
+    }
