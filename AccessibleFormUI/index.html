@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Accessible Form UI</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="form-card" aria-labelledby="form-title">
+        <div class="form-copy">
+          <h1 id="form-title" class="sr-only">Profile setup</h1>
+          <p class="form-description sr-only">
+            Complete the fields below to update your profile and meet the
+            remaining requirements.
+          </p>
+
+          <form class="profile-form" action="#" method="post" novalidate>
+            <div class="field-group">
+              <label for="full-name">Full Name</label>
+              <input
+                id="full-name"
+                name="full-name"
+                type="text"
+                placeholder="What should we call you?"
+                autocomplete="name"
+                aria-required="true"
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value="john@doe.com"
+                autocomplete="email"
+                aria-required="true"
+                aria-invalid="true"
+                aria-describedby="email-error"
+              />
+              <p class="field-message error" id="email-error">
+                Email is already taken
+              </p>
+            </div>
+
+            <div class="field-group">
+              <label for="password">Enter Password</label>
+              <div class="password-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value="xxxxxxxx"
+                  autocomplete="new-password"
+                  aria-required="true"
+                />
+                <button
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">◉</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="confirm-password">Confirm Password</label>
+              <div class="password-field">
+                <input
+                  id="confirm-password"
+                  name="confirm-password"
+                  type="password"
+                  value="xxxxxxxx"
+                  autocomplete="new-password"
+                  aria-required="true"
+                />
+                <button
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Show password confirmation"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">◉</span>
+                </button>
+              </div>
+            </div>
+
+            <button class="submit-button" type="submit">Update Profile</button>
+          </form>
+        </div>
+
+        <aside class="progress-panel" aria-labelledby="progress-title">
+          <div
+            class="progress-meter"
+            role="progressbar"
+            aria-label="Profile completeness"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="65"
+          >
+            <div class="progress-ring">
+              <span>65%</span>
+            </div>
+          </div>
+
+          <h2 id="progress-title">Profile Completeness</h2>
+
+          <div class="checklist-card" aria-labelledby="requirements-title">
+            <h3 id="requirements-title" class="sr-only">
+              Requirements checklist
+            </h3>
+            <ul class="requirements-list">
+              <li class="done">Create Account</li>
+              <li class="done">Update Roadmap Progress</li>
+              <li class="done">Setup Public Profile</li>
+              <li>Complete your first project</li>
+              <li>Invite your Friends</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
