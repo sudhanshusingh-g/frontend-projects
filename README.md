@@ -4,3 +4,4 @@ Roadmap projects
 - [Testimonial Card](https://roadmap.sh/projects/testimonial-cards)
 - [Date Picker](https://roadmap.sh/projects/datepicker-ui)
 - [Accessible Form UI](https://roadmap.sh/projects/accessible-form-ui)
+- [Image Grid](https://roadmap.sh/projects/image-grid)
