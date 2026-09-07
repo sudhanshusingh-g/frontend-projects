@@ -8,3 +8,4 @@ Roadmap projects
 - [Tooltip UI](https://roadmap.sh/projects/tooltip-ui)
 - [Tabs](https://roadmap.sh/projects/simple-tabs)
 - [Cookie Consent](https://roadmap.sh/projects/cookie-consent)
+- [Restricted Text Area](https://roadmap.sh/projects/restricted-textarea)
