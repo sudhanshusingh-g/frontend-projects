@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Component</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="index.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="accordion-card" aria-labelledby="accordion-title">
+        <div class="hero">
+          <p class="eyebrow">UI Component</p>
+          <h1 id="accordion-title">Frequently asked questions</h1>
+          <p class="subtitle">
+            Expand each item to reveal concise answers with smooth motion and
+            accessible keyboard support.
+          </p>
+        </div>
+
+        <div class="accordion" data-accordion>
+          <article class="accordion-item is-open">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-trigger"
+                type="button"
+                aria-expanded="true"
+                aria-controls="panel-1"
+                id="accordion-trigger-1"
+              >
+                What is an accordion component?
+                <span class="icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div
+              class="accordion-panel"
+              id="panel-1"
+              role="region"
+              aria-labelledby="accordion-trigger-1"
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  An accordion groups related content into expandable sections,
+                  helping users scan information without leaving the page.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-2"
+                id="accordion-trigger-2"
+              >
+                Can multiple sections be open?
+                <span class="icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div
+              class="accordion-panel"
+              id="panel-2"
+              role="region"
+              aria-labelledby="accordion-trigger-2"
+              hidden
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  This version supports multiple open sections at once, so users
+                  can compare answers side by side.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-3"
+                id="accordion-trigger-3"
+              >
+                Is it keyboard accessible?
+                <span class="icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div
+              class="accordion-panel"
+              id="panel-3"
+              role="region"
+              aria-labelledby="accordion-trigger-3"
+              hidden
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  Yes. The control uses native buttons, so it works with Tab,
+                  Enter, and Space without any extra effort.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="panel-4"
+                id="accordion-trigger-4"
+              >
+                Can I customize the design?
+                <span class="icon" aria-hidden="true"></span>
+              </button>
+            </h2>
+            <div
+              class="accordion-panel"
+              id="panel-4"
+              role="region"
+              aria-labelledby="accordion-trigger-4"
+              hidden
+            >
+              <div class="accordion-panel-inner">
+                <p>
+                  Absolutely. Adjust the spacing, colors, motion, and icon style
+                  in the stylesheet to match your product.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
