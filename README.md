@@ -10,3 +10,4 @@ Roadmap projects
 - [Cookie Consent](https://roadmap.sh/projects/cookie-consent)
 - [Restricted Text Area](https://roadmap.sh/projects/restricted-textarea)
 - [Accordion](https://roadmap.sh/projects/accordion)
+- [Age Calculator](https://roadmap.sh/projects/age-calculator)
