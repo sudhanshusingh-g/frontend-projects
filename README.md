@@ -11,3 +11,4 @@ Roadmap projects
 - [Restricted Text Area](https://roadmap.sh/projects/restricted-textarea)
 - [Accordion](https://roadmap.sh/projects/accordion)
 - [Age Calculator](https://roadmap.sh/projects/age-calculator)
+- [Flashcard App](https://roadmap.sh/projects/flash-cards)
