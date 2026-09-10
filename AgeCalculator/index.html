@@ -1,61 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Age Calculator</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="card">
-            <h1 class="title">Age Calculator</h1>
-            <p class="subtitle">Find out exactly how old you are</p>
-            
-            <form id="ageForm" class="form">
-                <div class="form-group">
-                    <label for="birthdate" class="label">Select Your Birthdate</label>
-                    <input 
-                        type="text" 
-                        id="birthdate" 
-                        class="input" 
-                        placeholder="Click to select your date"
-                        autocomplete="off"
-                        required
-                    >
-                    <span id="dateError" class="error-message"></span>
-                </div>
-                
-                <button type="submit" class="btn">Calculate Age</button>
-            </form>
+      <div class="card">
+        <h1 class="title">Age Calculator</h1>
+        <p class="subtitle">Find out exactly how old you are</p>
 
-            <div id="resultContainer" class="result-container hidden">
-                <h2 class="result-title">Your Age</h2>
-                
-                <div class="result-grid">
-                    <div class="result-card">
-                        <div class="result-number" id="yearsValue">0</div>
-                        <div class="result-label">Years</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-number" id="monthsValue">0</div>
-                        <div class="result-label">Months</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-number" id="daysValue">0</div>
-                        <div class="result-label">Days</div>
-                    </div>
-                </div>
+        <form id="ageForm" class="form">
+          <div class="form-group">
+            <label for="birthdate" class="label">Select Your Birthdate</label>
+            <input
+              type="text"
+              id="birthdate"
+              class="input"
+              placeholder="Click to select your date"
+              autocomplete="off"
+              required
+            />
+            <span id="dateError" class="error-message"></span>
+          </div>
 
-                <div class="additional-info">
-                    <p id="nextBirthdayInfo" class="info-text"></p>
-                    <p id="totalDaysInfo" class="info-text"></p>
-                </div>
+          <button type="submit" class="btn">Calculate Age</button>
+        </form>
 
-                <button type="button" class="btn btn-secondary" id="resetBtn">Calculate Again</button>
+        <div id="resultContainer" class="result-container hidden">
+          <h2 class="result-title">Your Age</h2>
+
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-number" id="yearsValue">0</div>
+              <div class="result-label">Years</div>
             </div>
+            <div class="result-card">
+              <div class="result-number" id="monthsValue">0</div>
+              <div class="result-label">Months</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number" id="daysValue">0</div>
+              <div class="result-label">Days</div>
+            </div>
+          </div>
+
+          <div class="additional-info">
+            <p id="nextBirthdayInfo" class="info-text"></p>
+            <p id="totalDaysInfo" class="info-text"></p>
+          </div>
+
+          <button type="button" class="btn btn-secondary" id="resetBtn">
+            Calculate Again
+          </button>
         </div>
+      </div>
     </div>
 
     <!-- Luxon Library -->
@@ -64,5 +69,5 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- Custom Script -->
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
