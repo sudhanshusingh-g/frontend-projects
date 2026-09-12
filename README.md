@@ -12,3 +12,5 @@ Roadmap projects
 - [Accordion](https://roadmap.sh/projects/accordion)
 - [Age Calculator](https://roadmap.sh/projects/age-calculator)
 - [Flashcard App](https://roadmap.sh/projects/flash-cards)
+- [Pricing Table](https://roadmap.sh/projects/pricing-comparison-table)
+-
