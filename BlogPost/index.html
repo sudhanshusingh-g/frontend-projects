@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>How I Learned to Structure Long-Form HTML</title>
+    <meta
+      name="description"
+      content="A short guide showing semantic HTML structure for a single blog post: header, article, lists, blockquote, figure, and footer."
+    />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Readable Web</h1>
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/articles">All Articles</a></li>
+            <li><a href="/about">About the Author</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <article>
+        <header>
+          <h1>How I Learned to Structure Long-Form HTML</h1>
+          <p>
+            By <a href="/authors/jordan-smith">Jordan Smith</a> —
+            <time datetime="2026-09-13">September 13, 2026</time>
+          </p>
+        </header>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop"
+            alt="Person writing on paper while laptop shows HTML code"
+          />
+          <figcaption>
+            Marking up a draft article using semantic HTML regions.
+          </figcaption>
+        </figure>
+
+        <p>
+          Long-form content becomes easier to maintain when you choose elements
+          that match the meaning of the text. In this short walkthrough I
+          explain the decisions I make for structure, accessibility, and search
+          friendliness.
+        </p>
+
+        <h2>Why semantic regions matter</h2>
+        <p>
+          Using elements such as <strong>header</strong>, <strong>main</strong>,
+          and <strong>footer</strong> helps assistive technology and search
+          engines understand the role of each part of the page. For emphasized
+          words where the meaning matters, use <em>em</em> for stress and
+          <strong>strong</strong> for importance.
+        </p>
+
+        <h2>Practical checklist</h2>
+        <p>When I build a post I follow a small checklist:</p>
+        <ul>
+          <li>One <code>&lt;h1&gt;</code> for the post title</li>
+          <li>
+            Section headings with <code>&lt;h2&gt;</code> and subsections with
+            <code>&lt;h3&gt;</code>
+          </li>
+          <li>
+            Paragraphs in <code>&lt;p&gt;</code>, lists in
+            <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>
+          </li>
+          <li>
+            Use <code>&lt;figure&gt;</code> +
+            <code>&lt;figcaption&gt;</code> for images
+          </li>
+        </ul>
+
+        <h2>Example code snippet</h2>
+        <p>
+          Here is a minimal example showing the article wrapper and a heading:
+        </p>
+        <pre><code>&lt;main&gt;
+	&lt;article&gt;
+		&lt;h1&gt;Post title&lt;/h1&gt;
+		&lt;p&gt;Intro paragraph&lt;/p&gt;
+	&lt;/article&gt;
+&lt;/main&gt;
+</code></pre>
+
+        <h2>Quoting guidance</h2>
+        <p>
+          Use <code>&lt;blockquote&gt;</code> for longer quotations and include
+          a source with <code>&lt;cite&gt;</code> when available.
+        </p>
+
+        <blockquote>
+          <p>
+            Semantic HTML is not about being trendy — it's about communicating
+            structure and meaning to every tool that reads your page.
+          </p>
+          <footer>
+            —
+            <cite
+              ><a
+                href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics"
+                >MDN Web Docs: Semantics</a
+              ></cite
+            >
+          </footer>
+        </blockquote>
+
+        <h2>Resources and further reading</h2>
+        <p>
+          To learn more about HTML semantics, read the
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+            >MDN reference for HTML elements</a
+          >.
+        </p>
+
+        <h3>Key takeaways</h3>
+        <p>
+          Start with correct structure; add styling later. A well-structured
+          document is resilient, accessible, and easier to maintain.
+        </p>
+
+        <footer>
+          <p>
+            Tags: <a href="/tags/html">HTML</a>,
+            <a href="/tags/accessibility">Accessibility</a>,
+            <a href="/tags/content-strategy">Content strategy</a>
+          </p>
+        </footer>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Readable Web. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

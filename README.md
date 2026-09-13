@@ -13,4 +13,4 @@ Roadmap projects
 - [Age Calculator](https://roadmap.sh/projects/age-calculator)
 - [Flashcard App](https://roadmap.sh/projects/flash-cards)
 - [Pricing Table](https://roadmap.sh/projects/pricing-comparison-table)
--
+- [Blog Post](https://roadmap.sh/projects/blog-post-page)
