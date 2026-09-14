@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Contact Us</h1>
+
+      <form action="https://example.com/submit" method="post">
+        <fieldset>
+          <legend>Send us a message</legend>
+
+          <div>
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" required />
+          </div>
+
+          <div>
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="general">General inquiry</option>
+              <option value="support">Support</option>
+              <option value="partnership">Partnership</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              minlength="20"
+              required
+            ></textarea>
+          </div>
+
+          <fieldset>
+            <legend>How did you hear about us?</legend>
+            <div>
+              <input
+                type="radio"
+                id="referral-search"
+                name="referral"
+                value="search"
+              />
+              <label for="referral-search">Search engine</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="referral-friend"
+                name="referral"
+                value="friend"
+              />
+              <label for="referral-friend">Friend or colleague</label>
+            </div>
+            <div>
+              <input type="radio" id="referral-ad" name="referral" value="ad" />
+              <label for="referral-ad">Advertisement</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <input
+              type="checkbox"
+              id="newsletter"
+              name="newsletter"
+              value="yes"
+            />
+            <label for="newsletter"
+              >Subscribe to our newsletter (optional)</label
+            >
+          </div>
+
+          <div>
+            <button type="submit">Send Message</button>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
