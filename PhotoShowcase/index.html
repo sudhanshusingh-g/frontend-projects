@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Showcase</title>
+  </head>
+  <body>
+    <header>
+      <h1>Photo Showcase</h1>
+      <p>
+        A simple page demonstrating image markup, captions, alt text, and
+        embedded video.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading">Image Gallery</h2>
+
+        <figure>
+          <img
+            src="https://picsum.photos/id/1015/600/400"
+            alt="Snowy mountain peaks rising above a calm valley"
+            width="600"
+            height="400"
+          />
+          <figcaption>
+            A wide mountain scene with bright snow and layered ridges.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://picsum.photos/id/1025/600/400"
+            alt="A brown and white dog looking directly at the camera"
+            width="600"
+            height="400"
+          />
+          <figcaption>
+            A friendly portrait that focuses on the animal's expression.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://picsum.photos/id/1035/600/400"
+            alt="A narrow path leading through a green forest"
+            width="600"
+            height="400"
+          />
+          <figcaption>
+            A forest trail framed by tall trees and soft light.
+          </figcaption>
+        </figure>
+
+        <img
+          src="https://picsum.photos/id/1043/600/400"
+          alt="Blue ocean waves breaking near a rocky shoreline"
+          width="600"
+          height="400"
+        />
+
+        <img
+          src="https://picsum.photos/id/1062/600/400"
+          alt="A city skyline reflected in still water at sunset"
+          width="600"
+          height="400"
+        />
+
+        <img
+          src="https://picsum.photos/id/1074/300/200"
+          alt=""
+          width="300"
+          height="200"
+        />
+      </section>
+
+      <section aria-labelledby="video-heading">
+        <h2 id="video-heading">Embedded Video</h2>
+        <video
+          controls
+          poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+          width="640"
+          height="360"
+        >
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video element. You can download the
+          video file from the linked source.
+        </video>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built to demonstrate semantic media markup.</p>
+    </footer>
+  </body>
+</html>

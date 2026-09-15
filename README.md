@@ -15,3 +15,4 @@ Roadmap projects
 - [Pricing Table](https://roadmap.sh/projects/pricing-comparison-table)
 - [Blog Post](https://roadmap.sh/projects/blog-post-page)
 - [ContactForm](https://roadmap.sh/projects/contact-form)
+- [Photo Showcase](https://roadmap.sh/projects/photo-showcase)
