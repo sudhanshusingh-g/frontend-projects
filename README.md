@@ -16,3 +16,4 @@ Roadmap projects
 - [Blog Post](https://roadmap.sh/projects/blog-post-page)
 - [ContactForm](https://roadmap.sh/projects/contact-form)
 - [Photo Showcase](https://roadmap.sh/projects/photo-showcase)
+- [Pricing Cards](https://roadmap.sh/projects/pricing-cards)
