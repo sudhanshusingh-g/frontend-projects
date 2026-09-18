@@ -18,3 +18,4 @@ Roadmap projects
 - [Photo Showcase](https://roadmap.sh/projects/photo-showcase)
 - [Pricing Cards](https://roadmap.sh/projects/pricing-cards)
 - [Quiz App](https://roadmap.sh/projects/quiz-app)
+- [Weather App](https://roadmap.sh/projects/weather-app)
