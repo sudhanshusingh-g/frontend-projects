@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Random Repository</title>
+    <meta
+      name="description"
+      content="Find a random GitHub repository by programming language using the GitHub Search API."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b1020;
+        --panel: rgba(18, 26, 51, 0.88);
+        --panel-strong: #121a33;
+        --text: #e5eefc;
+        --muted: #9db0d1;
+        --accent: #7c5cff;
+        --accent-2: #31c6f7;
+        --border: rgba(149, 170, 214, 0.18);
+        --success: #29d391;
+        --danger: #ff6b81;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(124, 92, 255, 0.22),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(49, 198, 247, 0.2),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #0b1020 0%, #070b16 100%);
+      }
+
+      button,
+      select {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .app {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .shell {
+        width: min(960px, 100%);
+        background: linear-gradient(
+          180deg,
+          rgba(18, 26, 51, 0.94),
+          rgba(11, 16, 32, 0.92)
+        );
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero {
+        padding: 32px 32px 18px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(124, 92, 255, 0.12);
+        color: #cfc5ff;
+        font-size: 0.84rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 0 20px rgba(124, 92, 255, 0.9);
+      }
+
+      h1 {
+        margin: 18px 0 10px;
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        line-height: 1.05;
+      }
+
+      .subtitle {
+        max-width: 64ch;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: end;
+        padding: 24px 32px 32px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.015);
+      }
+
+      .field {
+        flex: 1 1 260px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        color: #dbe6ff;
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      .select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(7, 11, 22, 0.78);
+        color: var(--text);
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .select:focus {
+        border-color: rgba(124, 92, 255, 0.9);
+        box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.15);
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        appearance: none;
+        border: 0;
+        border-radius: 16px;
+        padding: 14px 18px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .button:hover:not(:disabled) {
+        transform: translateY(-1px);
+      }
+
+      .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+      }
+
+      .primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: 0 10px 24px rgba(124, 92, 255, 0.22);
+      }
+
+      .secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+      }
+
+      .content {
+        padding: 28px 32px 32px;
+      }
+
+      .state {
+        min-height: 320px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 24px;
+        border: 1px dashed rgba(157, 176, 209, 0.25);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .state h2 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .state p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .spinner {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 4px solid rgba(157, 176, 209, 0.18);
+        border-top-color: var(--accent-2);
+        animation: spin 0.9s linear infinite;
+        margin-bottom: 18px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .repo-card {
+        border-radius: 24px;
+        padding: 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--border);
+      }
+
+      .repo-top {
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        align-items: start;
+        flex-wrap: wrap;
+      }
+
+      .repo-name {
+        margin: 0;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        line-height: 1.1;
+      }
+
+      .repo-name a {
+        text-decoration: none;
+      }
+
+      .repo-name a:hover {
+        text-decoration: underline;
+      }
+
+      .repo-meta {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(41, 211, 145, 0.12);
+        color: #8bf0c4;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .stat {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(7, 11, 22, 0.55);
+        border: 1px solid var(--border);
+      }
+
+      .stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.86rem;
+        margin-bottom: 8px;
+      }
+
+      .stat strong {
+        font-size: 1.35rem;
+      }
+
+      .message {
+        max-width: 54ch;
+      }
+
+      .error {
+        color: #ff9ead;
+      }
+
+      @media (max-width: 720px) {
+        .hero,
+        .controls,
+        .content {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .button,
+        .select {
+          width: 100%;
+        }
+      }
+    </style>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useMemo, useState } = React;
+
+      const LANGUAGES = [
+        { label: "Select a language", value: "" },
+        { label: "JavaScript", value: "javascript" },
+        { label: "TypeScript", value: "typescript" },
+        { label: "Python", value: "python" },
+        { label: "Java", value: "java" },
+        { label: "C#", value: "csharp" },
+        { label: "Go", value: "go" },
+        { label: "Rust", value: "rust" },
+        { label: "PHP", value: "php" },
+        { label: "Ruby", value: "ruby" },
+        { label: "Swift", value: "swift" },
+        { label: "Kotlin", value: "kotlin" },
+      ];
+
+      function App() {
+        const [language, setLanguage] = useState("");
+        const [repo, setRepo] = useState(null);
+        const [status, setStatus] = useState("idle");
+        const [error, setError] = useState("");
+
+        const statusCopy = useMemo(() => {
+          if (!language) {
+            return {
+              title: "Choose a language",
+              description:
+                "Select a programming language to search GitHub for a random matching repository.",
+            };
+          }
+
+          if (status === "loading") {
+            return {
+              title: "Searching GitHub…",
+              description:
+                "Fetching a random repository that matches the selected language.",
+            };
+          }
+
+          if (status === "error") {
+            return {
+              title: "Something went wrong",
+              description:
+                error || "Unable to load repositories from GitHub right now.",
+            };
+          }
+
+          return {
+            title: "No repository loaded yet",
+            description:
+              "Press the button to fetch a random repository, then use Refresh to get another one.",
+          };
+        }, [language, status, error]);
+
+        async function fetchRandomRepository(selectedLanguage = language) {
+          if (!selectedLanguage) {
+            setRepo(null);
+            setStatus("idle");
+            setError("");
+            return;
+          }
+
+          setStatus("loading");
+          setError("");
+
+          try {
+            const query = `language:${selectedLanguage}`;
+            const url = new URL("https://api.github.com/search/repositories");
+            url.searchParams.set("q", query);
+            url.searchParams.set("sort", "stars");
+            url.searchParams.set("order", "desc");
+            url.searchParams.set("per_page", "100");
+
+            const response = await fetch(url.toString(), {
+              headers: {
+                Accept: "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2026-03-10",
+              },
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `GitHub request failed with status ${response.status}.`,
+              );
+            }
+
+            const data = await response.json();
+            const items = Array.isArray(data.items) ? data.items : [];
+
+            if (items.length === 0) {
+              setRepo(null);
+              setStatus("empty");
+              return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * items.length);
+            setRepo(items[randomIndex]);
+            setStatus("success");
+          } catch (err) {
+            setRepo(null);
+            setStatus("error");
+            setError(
+              err instanceof Error ? err.message : "An unknown error occurred.",
+            );
+          }
+        }
+
+        function handleLanguageChange(event) {
+          const nextLanguage = event.target.value;
+          setLanguage(nextLanguage);
+          setRepo(null);
+          setError("");
+          setStatus("idle");
+        }
+
+        return (
+          <main className="app">
+            <section
+              className="shell"
+              aria-label="GitHub random repository finder"
+            >
+              <header className="hero">
+                <div className="eyebrow">GitHub Random Repository</div>
+                <h1>Find a random repository by language</h1>
+                <p className="subtitle">
+                  Pick a programming language, let GitHub do the searching, and
+                  explore a random repository with each refresh.
+                </p>
+              </header>
+
+              <div className="controls">
+                <div className="field">
+                  <label htmlFor="language">Programming language</label>
+                  <select
+                    id="language"
+                    className="select"
+                    value={language}
+                    onChange={handleLanguageChange}
+                  >
+                    {LANGUAGES.map((option) => (
+                      <option
+                        key={option.value || "placeholder"}
+                        value={option.value}
+                      >
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="actions">
+                  <button
+                    type="button"
+                    className="button primary"
+                    onClick={() => fetchRandomRepository()}
+                    disabled={!language || status === "loading"}
+                  >
+                    {status === "loading" ? "Loading…" : "Find repository"}
+                  </button>
+
+                  {repo ? (
+                    <button
+                      type="button"
+                      className="button secondary"
+                      onClick={() => fetchRandomRepository()}
+                      disabled={status === "loading"}
+                    >
+                      Refresh
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="content">
+                {status === "loading" ? (
+                  <div className="state" role="status" aria-live="polite">
+                    <div>
+                      <div className="spinner" aria-hidden="true" />
+                      <h2>{statusCopy.title}</h2>
+                      <p>{statusCopy.description}</p>
+                    </div>
+                  </div>
+                ) : status === "error" ? (
+                  <div className="state" role="alert">
+                    <div className="message">
+                      <h2 className="error">{statusCopy.title}</h2>
+                      <p>{statusCopy.description}</p>
+                    </div>
+                  </div>
+                ) : status === "empty" ? (
+                  <div className="state" role="status" aria-live="polite">
+                    <div className="message">
+                      <h2>{statusCopy.title}</h2>
+                      <p>{statusCopy.description}</p>
+                    </div>
+                  </div>
+                ) : repo ? (
+                  <article className="repo-card">
+                    <div className="repo-top">
+                      <div>
+                        <p className="eyebrow" style={{ margin: 0 }}>
+                          {repo.language || language}
+                        </p>
+                        <h2 className="repo-name">
+                          <a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {repo.full_name}
+                          </a>
+                        </h2>
+                        <p className="repo-meta">
+                          {repo.description ||
+                            "No description available for this repository."}
+                        </p>
+                      </div>
+
+                      <div className="badge" aria-label="Repository visibility">
+                        ★ {repo.stargazers_count.toLocaleString()} stars
+                      </div>
+                    </div>
+
+                    <div className="stats" aria-label="Repository statistics">
+                      <div className="stat">
+                        <span>Stars</span>
+                        <strong>
+                          {repo.stargazers_count.toLocaleString()}
+                        </strong>
+                      </div>
+                      <div className="stat">
+                        <span>Forks</span>
+                        <strong>{repo.forks_count.toLocaleString()}</strong>
+                      </div>
+                      <div className="stat">
+                        <span>Open issues</span>
+                        <strong>
+                          {repo.open_issues_count.toLocaleString()}
+                        </strong>
+                      </div>
+                    </div>
+                  </article>
+                ) : (
+                  <div className="state" role="status" aria-live="polite">
+                    <div className="message">
+                      <h2>{statusCopy.title}</h2>
+                      <p>{statusCopy.description}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+          </main>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>
