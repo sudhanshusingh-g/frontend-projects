@@ -1,4 +1,4 @@
-Roadmap projects
+Projects
 
 - [Changelog Component](https://roadmap.sh/projects/changelog-component)
 - [Testimonial Card](https://roadmap.sh/projects/testimonial-cards)
@@ -21,3 +21,4 @@ Roadmap projects
 - [Weather App](https://roadmap.sh/projects/weather-app)
 - [Github Repo](https://roadmap.sh/projects/github-random-repo)
 - [Custom Dropdown](https://roadmap.sh/projects/custom-dropdown)
+
