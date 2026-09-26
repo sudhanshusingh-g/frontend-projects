@@ -22,3 +22,4 @@ Projects
 - [Github Repo](https://roadmap.sh/projects/github-random-repo)
 - [Custom Dropdown](https://roadmap.sh/projects/custom-dropdown)
 - [Task Tracker](https://roadmap.sh/projects/task-tracker-js)
+- [Reddit Client](https://roadmap.sh/projects/reddit-client)
