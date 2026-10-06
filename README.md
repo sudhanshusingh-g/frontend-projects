@@ -25,4 +25,5 @@ Projects
 - [Reddit Client](https://roadmap.sh/projects/reddit-client)
 - [Temperature Converter](https://roadmap.sh/projects/temperature-converter)
 - [Pomodoro Timer](https://roadmap.sh/projects/pomodoro-timer)
-. [Theme Switcher ] (https://roadmap.sh/projects/theme-switcher)
+- [ThemeSwitcher](https://roadmap.sh/projects/theme-switcher)
+- [StoriesFeature]([roadmap.sh/projects/stories-feature](https://roadmap.sh/projects/stories-feature))
